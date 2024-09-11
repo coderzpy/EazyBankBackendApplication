@@ -55,10 +55,15 @@ public class ProjectSecurityConfig {
                 .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure())
                 //.csrf(csrfConfig -> csrfConfig.disable())
                 .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
-                        .requestMatchers("/myBalance").hasAnyAuthority("VIEWBALANCE", "VIEWACCOUNT")
-                        .requestMatchers( "/myLoans").hasAuthority("VIEWLOANS")
-                        .requestMatchers( "/myCards").hasAuthority("VIEWCARDS")
+                        /*.requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+                                .requestMatchers("/myBalance").hasAnyAuthority("VIEWBALANCE", "VIEWACCOUNT")
+                                .requestMatchers( "/myLoans").hasAuthority("VIEWLOANS")
+                                .requestMatchers( "/myCards").hasAuthority("VIEWCARDS")
+                                .requestMatchers("/user").authenticated()*/
+                        .requestMatchers("/myAccount").hasRole("USER")
+                        .requestMatchers("/myBalance").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers( "/myLoans").hasRole("USER")
+                        .requestMatchers( "/myCards").hasRole("USER")
                         .requestMatchers("/user").authenticated()
                 .requestMatchers("/notices", "/contact", "/error", "/register","/invalidSession").permitAll());
         http.formLogin(flc -> flc.disable());
