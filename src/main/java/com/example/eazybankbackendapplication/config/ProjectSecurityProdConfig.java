@@ -2,6 +2,7 @@ package com.example.eazybankbackendapplication.config;
 
 import com.example.eazybankbackendapplication.exceptionHandling.CustomAccessDeniedHandler;
 import com.example.eazybankbackendapplication.exceptionHandling.CustomBasicAuthenticationEntryPoint;
+import com.example.eazybankbackendapplication.filter.CsrfCookieFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

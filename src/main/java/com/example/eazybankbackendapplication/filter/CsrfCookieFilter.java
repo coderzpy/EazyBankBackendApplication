@@ -1,4 +1,4 @@
-package com.example.eazybankbackendapplication.config;
+package com.example.eazybankbackendapplication.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
